@@ -9,7 +9,7 @@ const ListItems = () => {
 
   // This useEffect will run once because there is an empty dependency array
   useEffect(() => {
-    const fetchQuote = async () => {
+    const fetchItems = async () => {
       const url = "http://localhost:3000/items";
 
       try {
@@ -24,11 +24,11 @@ const ListItems = () => {
         console.error("The error at ListItems.jsx api call is :", error);
       }
     };
-    fetchQuote();
+    fetchItems();
   }, []);
 
   return (
-    <div className="flex">
+    <div className="flex flex-wrap gap-x-4 gap-y-5  justify-center">
       {items
         ? items.map((item) => {
             return (
