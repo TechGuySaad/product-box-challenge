@@ -14,7 +14,7 @@ function App() {
       <div>NavBar</div>
       {/* <ListItems /> */}
       {/* <AddNewItem /> */}
-      {/* <Checkout /> */}
+      <Checkout />
     </div>
   );
 }
