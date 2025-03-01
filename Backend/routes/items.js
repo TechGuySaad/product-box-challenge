@@ -15,6 +15,7 @@ router.get("/", function (req, res) {
 /* Create a new item */
 router.post("/", function (req, res) {
   var item = req.body;
+
   curId += 1;
   item.id = curId;
   items[item.id] = item;

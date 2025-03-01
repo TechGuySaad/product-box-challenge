@@ -14,6 +14,8 @@ const CheckoutItem = ({
   checkoutItems,
   setCheckoutItems,
 }) => {
+  const cleanUrl = img.startsWith(".") ? img.replace(/^\./, "") : img;
+  let imageUrl = `http://localhost:3000${cleanUrl}`;
   const handleRemoveCartItem = () => {
     console.log("I was clicked");
 
@@ -34,7 +36,7 @@ const CheckoutItem = ({
     <div className="flex items-center border border-gray-300 rounded-md w-[600px]">
       <ListItem alignItems="flex-start">
         <ListItemAvatar>
-          <Avatar alt={`${name}`} src={`http://localhost:3000${img}`} />
+          <Avatar alt={`${name}`} src={imageUrl} />
         </ListItemAvatar>
         <ListItemText
           primary={`${name}`}

@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-const AddNewItem = () => {
+const AddNewItem = ({ items, setItems }) => {
   const {
     register,
     handleSubmit,
@@ -21,7 +21,7 @@ const AddNewItem = () => {
     try {
       const response = await axios.post(url, data);
       console.log("Success:", response.data);
-      console.log("Success:", response.data);
+      // console.log("Success:", response.data);
     } catch (err) {
       console.error("Error:", err);
       setError("something went wrong, try again");
@@ -55,15 +55,15 @@ const AddNewItem = () => {
           placeholder="Image Url"
           className="border p-2 w-full"
         />
-        <Link to="/">
-          <button
-            type="submit"
-            className="bg-blue-500 text-white p-2"
-            disabled={loading}
-          >
-            {loading ? "Submitting..." : "Submit"}
-          </button>
-        </Link>
+        {/* <Link to="/"> */}
+        <button
+          type="submit"
+          className="bg-blue-500 text-white p-2"
+          disabled={loading}
+        >
+          {loading ? "Submitting..." : "Submit"}
+        </button>
+        {/* </Link> */}
       </form>
     </div>
   );

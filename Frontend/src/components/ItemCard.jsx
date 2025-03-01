@@ -16,7 +16,8 @@ export default function ItemCard({
   checkoutItems,
   setCheckoutItems,
 }) {
-  let imageUrl = `http://localhost:3000${image}`;
+  const cleanUrl = image.startsWith(".") ? image.replace(/^\./, "") : image;
+  let imageUrl = `http://localhost:3000${cleanUrl}`;
 
   const handleAddItem = () => {
     const newItem = { id, name, price, image };
