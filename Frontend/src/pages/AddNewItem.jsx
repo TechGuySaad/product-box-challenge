@@ -2,6 +2,7 @@ import React from "react";
 
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 const AddNewItem = () => {
   const {
@@ -30,9 +31,13 @@ const AddNewItem = () => {
   };
 
   return (
-    <div className="form-container flex flex-col  w-full h-full px-[40rem] justify-start">
+    <div className="form-container flex flex-col w-full h-full  px-10 items-center">
       <h1>Add New item</h1>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="space-y-5"
+        style={{ maxWidth: "400px" }}
+      >
         <input
           {...register("name", { required: "Name is required" })}
           placeholder="Name"
@@ -50,14 +55,15 @@ const AddNewItem = () => {
           placeholder="Image Url"
           className="border p-2 w-full"
         />
-
-        <button
-          type="submit"
-          className="bg-blue-500 text-white p-2"
-          disabled={loading}
-        >
-          {loading ? "Submitting..." : "Submit"}
-        </button>
+        <Link to="/">
+          <button
+            type="submit"
+            className="bg-blue-500 text-white p-2"
+            disabled={loading}
+          >
+            {loading ? "Submitting..." : "Submit"}
+          </button>
+        </Link>
       </form>
     </div>
   );

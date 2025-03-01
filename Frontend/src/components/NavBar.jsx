@@ -56,7 +56,9 @@ function NavBar(props) {
         <Link to={"/checkout"}>
           <ListItem disablePadding>
             <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={"Checkout"} />
+              <ListItemText
+                primary={`Checkout (${props.checkoutItemsLength})`}
+              />
             </ListItemButton>
           </ListItem>
         </Link>
@@ -104,7 +106,10 @@ function NavBar(props) {
             </Link>
             <Link to="/checkout">
               <IconButton color="primary" aria-label="add to shopping cart">
-                <StyledBadge badgeContent={4} color="secondary">
+                <StyledBadge
+                  badgeContent={props.checkoutItemsLength}
+                  color="secondary"
+                >
                   <ShoppingCartIcon sx={{ color: "white" }} />
                 </StyledBadge>
               </IconButton>

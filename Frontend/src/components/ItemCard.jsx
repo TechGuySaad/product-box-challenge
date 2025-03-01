@@ -22,14 +22,21 @@ export default function ItemCard({
     const newItem = { id, name, price, image };
     setCheckoutItems((prevItems) => [...prevItems, newItem]);
     // console.log("checkoutItems:", checkoutItems);
+
     localStorage.setItem("checkoutItems", JSON.stringify(checkoutItems));
     // console.log("local storage items:", localStorage.getItem("checkoutItems"));
   };
 
   return (
-    <Card sx={{ maxWidth: 345, backgroundColor: "beige" }} elevation={5}>
+    <Card sx={{ width: 350, backgroundColor: "beige" }} elevation={5}>
       <CardActionArea>
-        <CardMedia component="img" height="140" image={imageUrl} alt={name} />
+        <CardMedia
+          component="img"
+          height={"100px"}
+          width={"100%"}
+          image={imageUrl}
+          alt={name}
+        />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {name}
