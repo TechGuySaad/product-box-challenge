@@ -1,11 +1,13 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
+
 import ItemCard from "../components/ItemCard";
 
 const ListItems = () => {
   const [items, setItems] = useState([]);
   const [error, setError] = useState(null);
+  const [checkoutItems, setCheckoutItems] = useState([]);
 
   // This useEffect will run once because there is an empty dependency array
   useEffect(() => {
@@ -24,6 +26,10 @@ const ListItems = () => {
         console.error("The error at ListItems.jsx api call is :", error);
       }
     };
+
+    const storedItems = JSON.parse(localStorage.getItem("checkoutItems"));
+    // console.log(storedItems);
+    setCheckoutItems(storedItems);
     fetchItems();
   }, []);
 
@@ -34,9 +40,12 @@ const ListItems = () => {
             return (
               <ItemCard
                 key={item.id}
+                id={item.id}
                 name={item.name}
                 price={item.price}
                 image={item.img}
+                setCheckoutItems={setCheckoutItems}
+                checkoutItems={checkoutItems}
               />
             );
           })

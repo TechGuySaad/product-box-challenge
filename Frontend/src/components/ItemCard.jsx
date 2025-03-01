@@ -8,8 +8,24 @@ import CardActionArea from "@mui/material/CardActionArea";
 import CardActions from "@mui/material/CardActions";
 
 // directly destructuring the props object into parameters
-export default function ItemCard({ name, price, image }) {
+export default function ItemCard({
+  id,
+  name,
+  price,
+  image,
+  checkoutItems,
+  setCheckoutItems,
+}) {
   let imageUrl = `http://localhost:3000${image}`;
+
+  const handleAddItem = () => {
+    const newItem = { id, name, price, image };
+    setCheckoutItems((prevItems) => [...prevItems, newItem]);
+    // console.log("checkoutItems:", checkoutItems);
+    localStorage.setItem("checkoutItems", JSON.stringify(checkoutItems));
+    // console.log("local storage items:", localStorage.getItem("checkoutItems"));
+  };
+
   return (
     <Card sx={{ maxWidth: 345, backgroundColor: "beige" }} elevation={5}>
       <CardActionArea>
@@ -24,7 +40,7 @@ export default function ItemCard({ name, price, image }) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
+        <Button size="small" color="primary" onClick={handleAddItem}>
           Add to cart
         </Button>
       </CardActions>
