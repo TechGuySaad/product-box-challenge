@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import ItemCard from "../components/ItemCard";
 
 const ListItems = () => {
   const [items, setItems] = useState([]);
@@ -14,10 +15,13 @@ const ListItems = () => {
       try {
         const response = await axios.get(url);
         // ensuring that response.data only logs when response is available
-        console.log(response ?? response.data);
-        // setItems(); // Updating state with the fetched items
+        // response
+        //   ? console.log(response.data)
+        //   : console.log("response not available");
+        response ? setItems(response.data) : setItems([]); // Updating state with the fetched items
       } catch (error) {
-        console.error(error);
+        setError(error);
+        console.error("The error at ListItems.jsx api call is :", error);
       }
     };
     fetchQuote();
@@ -25,7 +29,18 @@ const ListItems = () => {
 
   return (
     <div>
-      <p>items</p>
+      {items
+        ? items.map((item) => {
+            return (
+              <ItemCard
+                key={item.id}
+                name={item.name}
+                price={item.price}
+                image={item.img}
+              />
+            );
+          })
+        : console.log("Nothing to display")}
     </div>
   );
 };
