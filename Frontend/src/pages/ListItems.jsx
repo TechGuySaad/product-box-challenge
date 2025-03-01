@@ -28,7 +28,7 @@ const ListItems = () => {
   }, []);
 
   return (
-    <div>
+    <div className="flex">
       {items
         ? items.map((item) => {
             return (
