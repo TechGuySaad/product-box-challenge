@@ -6,6 +6,7 @@ function App() {
     <div className="app-container bg-blue-500 w-full h-screen">
       <div>NavBar</div>
       {/* <ListItems /> */}
+      <AddNewItem />
     </div>
   );
 }
