@@ -1,5 +1,4 @@
 import * as React from "react";
-import List from "@mui/material/List";
 
 import CheckoutItem from "../components/CheckoutItem";
 

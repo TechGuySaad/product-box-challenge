@@ -27,9 +27,6 @@ const ListItems = ({ checkoutItems, setCheckoutItems }) => {
       }
     };
 
-    const storedItems = JSON.parse(localStorage.getItem("checkoutItems"));
-    // console.log(storedItems);
-    // setCheckoutItems(storedItems);
     fetchItems();
   }, []);
 
